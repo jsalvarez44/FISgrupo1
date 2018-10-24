@@ -74,7 +74,9 @@ int cuenta;
 int BG = 0;
 int TC = 0;
 	
-
+/* ESTA NUY BIEN PERO BUSCA LA MANERA DE QUE EL CORRA UN POCO MAS RAPIDO, EL SYSTEM PAUSE NO FUNCIONA BIEN EN ESTE CASO 
+                                                                                  (Sebastian Alvarez) */
+										  
 //1er Loop cambia el fondo 
 for(int cuenta=0;cuenta<=15;cuenta++)
 {
@@ -110,4 +112,4 @@ for(int cuenta=0;cuenta<=15;cuenta++)
 }
 
 // PARTE DE CARLOS PUCO
-/* Carlos por favor pon aqui tu parte :) */
+/* Carlos por favor pon aqui tu parte :) (-Sebastian Alvarez) */

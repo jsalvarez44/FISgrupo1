@@ -1,0 +1,107 @@
+//PARTE DE SEBASTIAN ALVAREZ
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+ int main()
+ {
+ 	int cuenta, TBG, TC, A, B;
+ 	cuenta=1;
+ 	TBG=0;
+ 	TC=15;
+ 	
+ 	printf(" ESTOS SON EJEMPLOS DE ALGUNAS DE LAS POSIBLES COMBINACIONES DE LOS COLORES DE CONIO ");
+ 	system("PAUSE");
+ 	while(cuenta<=15)
+ 	{
+		textbackground(TBG);
+ 		textcolor(TC);
+ 		clrscr();
+ 		gotoxy(1,1);
+ 		cprintf(" \n\n\n\n\n\n\n      LA COMBINACION ACTUAL ES %d y %d ",TBG,TC);
+ 		system("PAUSE");
+ 		TBG=TBG+1;
+ 		TC=TC-1;
+ 		cuenta=cuenta+1;
+	}
+	while(cuenta>0) 
+	{
+		textbackground(TBG);
+ 		textcolor(TC);
+ 		clrscr();
+ 		gotoxy(1,1);
+ 		cprintf(" \n\n\n\n\n\n\n      LA COMBINACION ACTUAL ES %d y %d ",TBG,TC);
+ 		system("PAUSE");
+ 		TBG=TBG-1;
+ 		TC=TC+1;
+ 		cuenta=cuenta-1;
+	}
+	clrscr();
+	printf("\nGracias por utilizar este programa :)");
+ }
+ /*
+ COLORES DE LA LIBRERIA CONIO
+ 0= negro
+ 1= azul
+ 2= verde
+ 3= cyan
+ 4= rojo
+ 5= magenta
+ 6= marron
+ 7= gris
+ 8= gris oscuro
+ 9= azul intenso
+ 10= verde intenso
+ 11= cyan intenso
+ 12= rojo intenso
+ 13= magenta intenso
+ 14= amarillo
+ 15= blanco
+ */
+ 
+ // PARTE DE FABIAN VALENCIA
+#include <conio.h>
+#include <string.h>
+#include <stdlib.h>
+
+main()
+{
+	
+//Declaramos tres variables que nos ayuden a cambiar los colores	
+int cuenta;
+int BG = 0;
+int TC = 0;
+	
+
+//1er Loop cambia el fondo 
+for(int cuenta=0;cuenta<=15;cuenta++)
+{
+	textbackground(BG);
+	clrscr();
+	
+	//2do Loop cambia el color del texto
+	for(int cuenta=0;cuenta<=15;cuenta++)
+		{
+			textcolor(TC);
+			clrscr();
+			
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************");
+			printf("\n********************************************************************************\n");
+		
+			TC=TC+1;
+			system("PAUSE");
+		}
+		
+		BG=BG+1;
+		
+   }
+}

@@ -8,6 +8,9 @@
  	cuenta=1;
  	TBG=0;
  	TC=15;
+	
+	/* No te dan todas las combinaciones posibles, seria mejor usar un for loop 
+	anidado con otro para asi generar todas las posibles combinaciones (-Fabian Valencia)*/
  	
  	printf(" ESTOS SON EJEMPLOS DE ALGUNAS DE LAS POSIBLES COMBINACIONES DE LOS COLORES DE CONIO ");
  	system("PAUSE");

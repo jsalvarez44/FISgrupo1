@@ -112,7 +112,7 @@ for(int cuenta=0;cuenta<=15;cuenta++)
 }
 
 // PARTE DE CARLOS PUCO
-/* Carlos por favor pon aqui tu parte :) (-Sebastian Alvarez) */
+/* Te fakta declarar ma libteria stduo.h :) (-Sebastian Alvarez) */
 
 #include 
 #include <stdlib.h>

@@ -113,8 +113,9 @@ for(int cuenta=0;cuenta<=15;cuenta++)
 
 // PARTE DE CARLOS PUCO
 /* Te falta declarar la libreria stdio.h :) (-Sebastian Alvarez) */
+// ya le corregi //
 
-#include 
+#include <stdio.h>
 #include <stdlib.h>
 #include <conio.h>
 using namespace std;

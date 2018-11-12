@@ -1,0 +1,40 @@
+#include<stdio.h>
+
+int mayor(int *,int *);
+
+main()
+{
+	
+	int A,B,resp;
+	
+	printf("Ingrese el primer valor entero: ");
+	scanf("%d",&A);
+	printf("Ingrese el segundo valor entero: ");
+	scanf("%d",&B);
+	
+	resp=mayor(&A,&B);
+	
+	printf("\nEl numero mayor es: %d ",resp);
+}
+
+int mayor(int *x, int*y)
+{
+	int A,B,MAYOR;
+	
+	A=*x;
+	B=*y;
+	
+	if(A > B)
+	{
+		MAYOR=A;
+	}
+	if(B > A)
+	{
+		MAYOR=B;
+	}
+	else 
+	{
+		MAYOR=A
+	}
+	return(MAYOR);
+}

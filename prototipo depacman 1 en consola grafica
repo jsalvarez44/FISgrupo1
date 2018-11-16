@@ -1,0 +1,367 @@
+#include <winbgim.h>
+#include <windows.h>
+#include <conio.h>
+
+void space (void);
+void pacman_open1 (int,int);
+void pacman_open2 (int,int);
+void pacman_open3 (int,int);
+void pacman_open4 (int,int);
+void pacman_closed1 (int,int);
+void pacman_closed2 (int,int);
+void pacman_closed3 (int,int);
+void pacman_closed4 (int,int);
+void pacman_clear (int,int);
+void coins1 (void);
+void coins2 (void);
+void coins3 (void);
+void coins4 (void);
+void coins5 (void);
+void coins6 (void);
+void coins7 (void);
+void fantasma1 (int,int);
+void fantasma2 (int,int);
+void fantasma3 (int,int);
+void fantasma4 (int,int);
+void fantasma_clear1 (int,int);
+void fantasma_clear2 (int,int);
+void fantasma_clear3 (int,int);
+void fantasma_clear4 (int,int);
+
+main()
+{
+	int x,y,radio;
+	char tecla;
+
+	x=100;
+	y=100;
+		
+	initwindow(800,800);
+	cleardevice();
+	space();
+	coins1();
+	coins2();
+	coins3();
+	coins4();
+	coins5();
+	coins6();
+	coins7();
+	
+	setcolor(0);
+	pacman_open1(x,y);
+
+	do
+	{
+		tecla=getch();
+		
+		switch(tecla)
+		{
+			case 72:
+				if(y<=89){y=90;}
+				pacman_clear(x,y);
+				moveto(x,y-=15);
+				pacman_open4(x,y);
+				//fantasma4(x,y);
+				Sleep(100);
+				pacman_closed4(x,y);
+				//fantasma_clear4(x,y);
+				break;
+			case 80:
+				if(y>=601){y=600;}
+				pacman_clear(x,y);
+				moveto(x,y+=15);
+				pacman_open2(x,y);
+				//fantasma2(x,y);
+				Sleep(100),
+				pacman_closed2(x,y);
+				//fantasma_clear2(x,y);
+				break;
+			case 75:
+				if(x<=89){x=90;}
+				pacman_clear(x,y);
+				moveto(x-=15,y);
+				pacman_open3(x,y);
+				//fantasma3(x,y);
+				Sleep(100);
+				pacman_closed3(x,y);
+				//fantasma_clear3(x,y);
+				break;
+			case 77:
+				if(x>=691){x=690;}
+				pacman_clear(x,y);
+				moveto(x+=15,y);
+				pacman_open1(x,y);
+				//fantasma1(x,y);
+				Sleep(100);
+				pacman_closed1(x,y);
+				//fantasma_clear1(x,y);
+				break;
+		}
+	}while(tecla!=27);
+
+	system("PAUSE");
+	closegraph();
+}
+
+void pacman_open1 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x-8,y-8,4);
+	setfillstyle(1,0);
+	fillellipse(x-8,y-8,4,4);
+	setcolor(0);
+	sector(x,y,-25,25,30,30);
+}
+
+void pacman_closed1 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x-8,y-8,4);
+	setfillstyle(1,0);
+	fillellipse(x-8,y-8,4,4);
+	lineto(x+30,y);
+}
+
+void pacman_open2 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x+8,y-8,4);
+	setfillstyle(1,0);
+	fillellipse(x+8,y-8,4,4);
+	setcolor(0);
+	sector(x,y,-115,-75,30,30);
+}
+
+void pacman_closed2 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x+8,y-8,4);
+	setfillstyle(1,0);
+	fillellipse(x+8,y-8,4,4);
+	lineto(x,y+30);
+}
+
+void pacman_open3 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x+8,y-8,4);
+	setfillstyle(1,0);
+	fillellipse(x+8,y-8,4,4);
+	setcolor(0);
+	sector(x,y,-205,-165,30,30);
+}
+
+void pacman_closed3 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x+8,y-8,4);
+	setfillstyle(1,0);
+	fillellipse(x+8,y-8,4,4);
+	lineto(x-30,y);
+}
+
+void pacman_open4 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x-8,y+8,4);
+	setfillstyle(1,0);
+	fillellipse(x-8,y+8,4,4);
+	setcolor(0);
+	sector(x,y,75,115,30,30);
+}
+
+void pacman_closed4 (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	circle(x-8,y+8,4);
+	setfillstyle(1,0);
+	fillellipse(x-8,y+8,4,4);
+	lineto(x,y-30);
+}
+
+void pacman_clear (int x, int y)
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,0);
+	fillellipse(x,y,30,30);
+}
+
+void coins1 (void)
+{
+	setcolor (1);
+	
+	for(int x=120;x<=700;x=x+30)
+	{
+		circle(x,100,8);
+		setfillstyle(1,15);
+		fillellipse(x,100,8,8);
+	}
+}
+
+void coins2 (void)
+{
+	setcolor (1);
+	
+	for(int y=130;y<=600;y=y+30)
+	{
+		circle(690,y,8);
+		setfillstyle(1,15);
+		fillellipse(690,y,8,8);
+	}
+}
+
+void coins3 (void)
+{
+	setcolor (1);
+	
+	for(int x=690;x>=100;x=x-30)
+	{
+		circle(x,610,8);
+		setfillstyle(1,15);
+		fillellipse(x,610,8,8);
+	}
+}
+
+void coins4 (void)
+{
+	setcolor (1);
+	
+	for(int y=610;y>=100;y=y-30)
+	{
+		circle(90,y,8);
+		setfillstyle(1,15);
+		fillellipse(90,y,8,8);
+	}
+}
+
+void coins5 (void)
+{
+	setcolor (1);
+	
+	for(int y=130;y<=580;y=y+30)
+	{
+		circle(390,y,8);
+		setfillstyle(1,15);
+		fillellipse(390,y,8,8);
+	}
+}
+
+void coins6 (void)
+{
+	setcolor (1);
+	
+	for(int x=120;x<=365;x=x+30)
+	{
+		circle(x,360,8);
+		setfillstyle(1,15);
+		fillellipse(x,360,8,8);
+	}
+}
+
+void coins7 (void)
+{
+	setcolor (1);
+	
+	for(int x=420;x<=670;x=x+30)
+	{
+		circle(x,360,8);
+		setfillstyle(1,15);
+		fillellipse(x,360,8,8);
+	}
+}
+
+void space (void)
+{
+	rectangle(150,160,630,550);
+	setfillstyle(1,6);
+	floodfill(200,200,15);
+	setcolor(15);
+	
+	for(int n=175;n<=550;n=n+60)
+	{
+		moveto(150,n);
+		lineto(630,n);
+	}
+	setcolor(0);
+	rectangle(340,160,445,550);
+	setfillstyle(1,0);
+	floodfill(400,400,0);
+	setcolor(0);
+	rectangle(150,310,630,405);
+	setfillstyle(1,0);
+	floodfill(300,400,0);
+	floodfill(600,400,0);
+}
+
+void fantasma1 (int x, int y)
+{
+	setcolor(1);
+	sector(x-60,y+10,0,180,25,25);
+}
+
+void fantasma_clear1 (int x, int y)
+{
+	setcolor(0);
+	sector(x-60,y+10,0,180,25,25);	
+}
+
+void fantasma2 (int x, int y)
+{
+	setcolor(1);
+	sector(x,y-35,0,-180,25,25);
+}
+
+void fantasma_clear2 (int x, int y)
+{
+	setcolor(0);
+	sector(x,y-35,0,-180,25,25);	
+}
+
+void fantasma3 (int x, int y)
+{
+	setcolor(1);
+	sector(x+60,y+10,0,180,25,25);
+}
+
+void fantasma_clear3 (int x, int y)
+{
+	setcolor(0);
+	sector(x+60,y+10,0,180,25,25);	
+}
+
+void fantasma4 (int x, int y)
+{
+	setcolor(1);
+	sector(x,y+60,0,180,25,25);
+}
+
+void fantasma_clear4 (int x, int y)
+{
+	setcolor(0);
+	sector(x,y+60,0,180,25,25);	
+}

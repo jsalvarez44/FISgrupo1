@@ -1,0 +1,136 @@
+RECURSIVIDAD: 
+
+En la programacion es una forma de interaccion (unica de vez en cuando)
+Existen conceptos recursivos asi como objetos recursivos, exiten ejemplos paradigmaticos que ejemplarizan el concepto recursivo.
+Por lo tanto, todo proceso recursivo necesita de alguna condicion o caso no recursivo que controle hasta cuando se ejecutaran los procesos.
+
+Cuando se implementa la recursividad a travez de una funcion en lenguaje C, es necesario controlar dentro de dicha funcion el caso no recursivo,
+para evitar un desborde en la memoria o un ciclo infinito.
+
+EJEMPLO: Se implementara la funcion factorial pero de manera recursiva.
+
+#include<stdio.h>
+
+int fact(int);
+
+main()
+{
+	int n,resp;
+	printf("Ingrese un valor n para calcular su factorial: ");
+	scanf("%d",&n);
+	
+	resp=fact(n);
+	printf("\nEl factorial de %d es %d",n,resp);
+}
+
+int fact(int n)
+{
+	if(n==0) 
+	{
+		return 1;	
+	}
+
+	return(n*fact(n-1));
+}
+
+EJERCICIO: Implementar una funcion recursiva que imprima hola las veces que lo diga el argumento
+
+#include<stdio.h>
+
+void hola(int);
+
+main()
+{
+	int n,resp;
+	printf("Ingrese un valor n de veces que quiere ser saludado: ");
+	scanf("%d",&n);
+	hola(n);
+}
+
+void hola (int n)
+{
+	if(n==0) 
+	{
+		return;
+	}
+	
+	printf("\nHola :v");
+	hola(n-1);
+}
+
+EJERCICIO: Implementar una funcion recursiva que pinte una circunferencia de forma recursiva
+
+#include <winbgim.h>
+#include <windows.h>
+
+void pintar_circ (int,int,int,int);
+
+main()
+{
+	int x,y,r,c;
+	
+	x=150;
+	y=150;
+	r=100;
+	c=15;
+	
+	initwindow(320,320);
+	cleardevice();
+	
+	pintar_circ(x,y,r,c);
+	
+	system("PAUSE");
+	closegraph();
+}
+
+void pintar_circ (int x, int y, int r, int c)
+{
+	if(r==0)
+	{
+		return;
+	}
+	if(c<0) 
+	{
+		c=15;
+	}
+	setcolor(c);
+	circle(x,y,r);
+	pintar_circ(x,y,r-1,c-1);
+}
+
+
+EJERCICIO: Construir una funcion recursiva para trazar una circunferencia conocido su centro y radio unicamente con pixeles
+
+#include <winbgim.h>
+#include <windows.h>
+#include <math.h>
+
+void circulo(int,int,int,int);
+
+main()
+{
+	int x,y,r,a;
+	
+	x=200;
+	y=200;
+	r=100;
+	a=0;
+	
+	initwindow(600,600);
+	cleardevice();
+	
+	circulo(x,y,r,a);
+	
+	system("PAUSE");
+	closegraph();
+}
+
+void circulo (int x, int y,int r, int a)
+{
+	if(a==360) return;
+	
+	int xc=r*cos(a);
+	int yc=r*sin(a);
+	putpixel(x+xc,y+yc,14);
+	circulo(x,y,r,a+1);
+}

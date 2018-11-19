@@ -189,3 +189,38 @@ int fact(int n)
 	else
 	return(n*fact(n-1));//aplica formuial recursiva
 }
+//Ejercicio  pra repetir "hola con recusividad"
+//implementar un nfunciuon recursiva las veces quie lo diga el argumento 
+#include<stdio.h>
+void hola(int);
+int fact(int );
+
+main()
+{
+	int n,res;
+	printf("Deme un numero :  ");
+	scanf("%d",&n);
+	hola (n);
+	
+}
+int fact(int n)
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(n==0)return 1;
+	else
+	return(n*fact(n-1));//construimos el factorial recursivo
+	
+} 
+void hola(int n)
+
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(n==0) return;
+	else
+	{
+		printf("\n HOLA ");
+		hola(n-1);
+	}
+
+}
+

@@ -165,4 +165,27 @@ void circ_mio (int x,int y,int r,int i)
 		putpixel(x+xf,y+yf,3);
 		circ_mio(x,y,r,i+1);
 	}
+} 
+
+//Ejercico de recursividad(sacar factorial)
+#include<stdio.h>
+int fact(int);
+
+main()
+{
+	int n,res;
+	printf("Deme un numero :  ");
+	scanf("%d",&n);
+	res=fact(n);
+	printf("\n factorial de %d es %d ",n,res);
+}
+//construimos el factorial recursivo 
+int fact(int n)
+
+
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(n==0)return 1;
+	else
+	return(n*fact(n-1));//aplica formuial recursiva
 }

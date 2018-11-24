@@ -1,0 +1,130 @@
+/* los arreglos gestionan datos un arreglo es en si un conjunto de datos del mismo tipo.Los arreglos , dependiendo del nuemro de coordenadas
+para identificar a un elemento del conjunto, pueden clasificarse en vectores , mtrices y grupos de datos mas elaborados 
+#include<stdio.h>
+ main()
+ {
+ 	int i[3]={1,2,3};
+ 	float f[4]={3.14,2.71,1.41,0.001};
+ 	char c[5]={'a','e','i','o','u'};
+ 	int m[2][3]={
+	             {1,2,3},
+	             {4,5,6}
+		      	};
+ 	
+ 	i[0]=1;
+ 	i[1]=2;
+ 	i[2]=3;
+ 	
+ 	f[0]=3.14;
+ 	f[1]=2.71;
+ 	f[2]=1.41;
+ 	f[3]=0.001;
+ 	
+ 	c[0]='a';
+ 	c[1]='e';
+ 	c[2]='i';
+ 	c[3]='o';
+ 	c[4]='u';
+ 	
+ 	m[0][0]=1;
+ 	m[0][1]=2;
+ 	m[0][2]=3;
+ 	m[1][0]=4;
+ 	m[1][1]=5;
+ 	m[1][2]=6;
+ 	
+ 	for (int a=0;a<3;a++)
+ 	printf("\n%d",i[a]);
+ 	for (int a=0;a<4;a++)
+ 	printf("\n%f",f[a]);
+ 	for (int a=0;a<5;a++)
+ 	printf("\n%c",c[a]);
+ 	
+ 	for (int a=0;a<2;a++)
+ 		{
+ 		printf("\n");	
+		 for(int j=0;j<3;a++)
+			printf("\n%d",m[a][j]); 	
+		}
+ 
+ }
+ 
+ 
+ construir un programa que permita ingresar las tres notas de de cinco estudiantes en la universidad
+    el programa debe reportar el promedio general en cada parcial 
+    
+    #include<stdio.h>
+main()
+{
+	float n1[5],n2[5],n3[5];
+	float p1,p2,p3;
+	
+	p1=p2=p3=0;
+	printf("se ingresaran la priemra nota ..........");
+	for(int i=0;i<5;i++)
+	{
+	   printf("\nDeme nota %d ",i+1);
+	   scanf("%f",&n1[i]);
+	   p1=p1+n1[i];
+	}
+	printf("se ingresaran la segunda  nota ..........");
+	for(int i=0;i<5;i++)
+	{
+	   printf("\nDeme nota %d ",i+1);
+	   scanf("%f",&n2[i]);
+	   p2=p2+n2[i];
+	}
+	printf("se ingresaran la tercera nota ..........");
+	for(int i=0;i<5;i++)
+	{
+	   printf("\nDeme nota %d ",i+1);
+	   scanf("%f",&n3[i]);
+	   if(n3[i]==20)
+	   {
+	   	p3=p3+n3[i];
+	   }
+	   if(n3[i]<=19.5)
+	   {
+	     p3=p3+n3[i]+0.5;
+	   }
+	}   
+printf("(\n los promedios son para p1:%f  )",p1/5);
+printf("(\n los promedios son para p2:%f  )",p2/5);
+printf("(\n los promedios son para p3:%f  )",p3/5);	
+}
+como el curso a obtenido un bajo rendimiento pero los estudiantes han sido muy parcitipativos, se sumara 5 decimas a atodas las notas del tercer parcial,
+ecepto a aquellas que  sueperan el 20
+  
+se ingresa la fecha de nacimiento de una persona en el formato año-mes-dia se des construir un programa que permita determianr la edad  
+a la fecha actual en año-mes-dia  */
+
+    
+    #include<stdio.h>
+main()
+{
+	int fecha_n[3],fecha_a[3]={2018,11,22};
+	int edad[3];
+	
+	
+	printf("\n Ingrese el año que nacio");
+	scanf("%d",&fecha_n[0]);
+	
+	printf("\n Ingrese el mes que nacio");
+	scanf("%d",&fecha_n[1]);
+	
+	printf("\n Ingrese el dia  que nacio");
+	scanf("%d",&fecha_n[2]);
+	 
+	 if (fecha_a[2]>=fecha_n[2])
+	 {
+	 	edad[2]=fecha_a[2]-fecha_n[2];
+	 }
+	 if (fecha_n[2]>fecha_a[2])
+	 {
+	 	fecha_a[1]=(fecha_a[1]-1);
+	 	fecha_n[2]=(fecha_a[2]+30);
+	 	edad[2]=fecha
+	 }
+	 if (fecha_a[1]>=fecha)
+	
+}

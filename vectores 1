@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+main()
+{
+	float N1[5],N2[5],N3[5];
+	float P1,P2,P3;
+	int i;
+	
+	P1=P2=P3=0;
+	
+	printf("Notas del primer parcial\n");
+	for(i=0;i<5;i++)
+	{
+		printf("Ingrese la nota %d: \n",i+1);
+		scanf("%f",&N1[i]);
+		P1=P1+N1[i];
+	}
+	
+	printf("\nNotas del segundo parcial\n");
+	for(i=0;i<5;i++)
+	{
+		printf("Ingrese la nota %d: \n",i+1);
+		scanf("%f",&N2[i]);
+		P2=P2+N2[i];
+	}
+	
+	printf("\nNotas del tercer parcial\n");
+	for(i=0;i<5;i++)
+	{
+		printf("Ingrese la nota %d: \n",i+1);
+		scanf("%f",&N3[i]);
+		if(N3[i]<=19.5)
+		{
+			N3[i]=N3[i]+0.5;
+		}
+		P3=P3+N3[i];
+	}
+	
+	printf("\nLos promedios son:\nPara P1:%f, para P2:%f y para P3:%f",P1/5,P2/5,P3/5);
+}

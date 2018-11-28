@@ -1,0 +1,30 @@
+//Crear un circulo solo conociendo su radio y armar los angulos con las funciones trigonometricas 
+
+
+#include<windows.h>
+#include<winbgim.h>
+void pinta_circ(int,int,int,int);
+
+
+main()
+{
+	
+	int x,y,radio,color;
+	x=100;
+	y=200;
+	radio=100;
+	color=14;
+	initwindow(800,600);
+	pinta_circ(x,y,radio,color);
+	system("PAUSE");
+	closegraph();
+}
+void pinta_circ (int x,int y,int r,int c)
+
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(r==0) return;
+	circle(x,y,r);
+	pinta_circ(x,y,r-1,c-1);
+
+}

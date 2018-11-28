@@ -101,41 +101,7 @@ void pintar_circ (int x, int y, int r, int c)
 mi ejercicio
 
 
-EJERCICIO: Construir una funcion recursiva para trazar una circunferencia conocido su centro y radio unicamente con pixeles
 
-#include <winbgim.h>
-#include <windows.h>
-#include <math.h>
-
-void circulo(int,int,int,int);
-
-main()
-{
-	int x,y,r,a;
-	
-	x=200;
-	y=200;
-	r=100;
-	a=0;
-	
-	initwindow(600,600);
-	cleardevice();
-	
-	circulo(x,y,r,a);
-	
-	system("PAUSE");
-	closegraph();
-}
-
-void circulo (int x, int y,int r, int a)
-{
-	if(a==360) return;
-	
-	int xc=r*cos(a);
-	int yc=r*sin(a);
-	putpixel(x+xc,y+yc,14);
-	circulo(x,y,r,a+1);
-}
 #include<winbgim.h>
 #include<math.h>
 void circ_mio(int,int,int,int);

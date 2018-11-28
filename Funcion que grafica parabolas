@@ -27,3 +27,8 @@ void grafica_parabola(void)
 		x++;
 	}
 }
+
+
+///////////////////////////////////////////////////////////
+podemos graficar la tangente
+

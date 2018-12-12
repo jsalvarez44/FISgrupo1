@@ -23,7 +23,7 @@ main()
 		scanf("%f",&N2[i]);
 		P2=P2+N2[i];
 	}
-	
+	//Carlos Puco
 	printf("\nNotas del tercer parcial\n");
 	for(i=0;i<5;i++)
 	{

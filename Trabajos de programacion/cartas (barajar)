@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+bool buscar(int *,int,int);
+void mostrar_c(int *,int);
+void mostrar_p(int *,int);
+void mostrar_d(int *,int);
+void mostrar_t(int *,int);
+void llenar(int *,int );
+void intercambia(int*, int *);
+void burbuja(int*,int );
+void desordenar(int*,int);
+main()
+{
+	
+	int C[12];
+	int T[12];
+	int D[12];
+	int P[12];
+	int n;
+	int dato;
+	//bool encontrado=false; //false o true
+	n=13;
+	dato=13;
+	llenar(C,n);
+	printf("\n\n las cartas con corazon son:    \n\n");
+	mostrar_c(C,n);
+	
+	llenar(T,n);
+	printf("\n\n las cartas de treboles son:    \n\n");
+	mostrar_t(T,n);
+	
+	llenar(D,n);
+	printf("\n\n las cartas de diamante son:    \n\n");
+	mostrar_d(D,n);
+	
+	llenar(P,n);
+	printf("\n\n las cartas de picas son:    \n\n");
+	mostrar_p(P,n);
+	
+	desordenar(C,n);
+	desordenar(D,n);
+	desordenar(T,n);
+	desordenar(P,n);
+	printf("\n\n las cartas barajeadas son:    \n\n");
+	mostrar_c(C,n);
+	mostrar_d(D,n);
+	mostrar_t(T,n);
+	mostrar_p(P,n);
+
+}
+    void mostrar_c (int *p,int n)

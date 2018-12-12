@@ -1,0 +1,87 @@
+// variable estaticas : tiene comprtamiuento como global 
+#include<stdio.h>
+#include<windows.h>
+int conteo(void);
+main()
+{
+	for(int i=1;i<=10;i++)
+	printf("%d ",conteo());
+	system("PAUSE");
+	
+}
+int conteo(void)
+{
+	static int c=20;
+	return c++;
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// realizar una funcion recursiva para implementar la potencia entera de un numero 
+//funcion no recuersiva sirve para no irse al infinito 
+#include<stdio.h>
+#include<windows.h>
+int conteo(int);
+float potencia(float ,int );
+main()
+{
+	float x,res;
+	int n;
+	for(int i=1;i<=10;i++)
+	printf("%d ",conteo(30));
+	printf("\n Deme base x y esponente n:   ");
+	scanf("%f %d",&x,&n);
+	res=potencia(x,n);
+//	printf("\n La potenci vale %f",potenci(x,n));
+	system("PAUSE");
+	
+}
+int conteo(int valor)
+{
+	
+	static int c=valor;
+	return c++;
+}
+float potencia(float x,int n)
+{
+	if(n==0) {
+	printf("Llegamos a la condicion de parada");
+	system("PAUSE");
+	return 1;}
+	else{
+	printf("\n n vale en esta llamda",n);
+	system("PAUSE");
+	return (x*potencia(x,n-1));
+	}
+	
+}
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//concurrencia : existecia de procesoso en el mismo tiempo
+//hilo: se relacionan los procesos o actividades
+//cuando exite dos variables el sistema solo selecciona una 
+//no se puede hacer cambios copnsecutivos 
+ #include<stdio.h>
+ #include<pthread.h>
+ #include<windows.h>
+// implemetamos dos funcione
+ void *reloj1(void *arg)
+ {
+ 	printf("\n Empieza reloj ");
+ 	Sleep(5000);
+ 	printf("\n Acaba reloj1 ");
+  } 
+  void *reloj2(void *arg)
+ {
+ 	printf("\n Empieza reloj2 ");
+ 	Sleep(2000);
+ 	printf("\n Acaba  reloj2 ");
+  } 
+  main()
+  {
+  	pthread_t hilo1,hilo2;
+  	pthread_create(&hilo1,NULL,reloj1,NULL);// asosiamos proceso reloj uno a hilo 1
+  	pthread_create(&hilo2,NULL,reloj2,NULL);// asiciamos proceso reloj2 a hilo2
+  	pthread_join (hilo1,NULL);
+  	pthread_join(hilo2,NULL);
+  	printf("\n chao");
+  	
+}

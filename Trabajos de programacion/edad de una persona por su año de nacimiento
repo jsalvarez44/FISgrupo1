@@ -15,7 +15,7 @@ main()
 	scanf("%d",&fechaN[1]);
 	printf("Ingrese su dia de nacimiento\n");
 	scanf("%d",&fechaN[2]);
-	
+//Carlos Puco	
 	if(fechaA[2]>=fechaN[2])
 	{
 		edad[2]=fechaA[2]-fechaN[2];

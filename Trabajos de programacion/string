@@ -4,7 +4,7 @@
 
   int cuenta_palabras(char *);
   
- 
+ //Carlos Puco
 int main()
 {
 	char  string1[100];

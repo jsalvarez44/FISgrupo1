@@ -52,7 +52,7 @@ float potencia(float x,int n)
 	system("PAUSE");
 	return (x*potencia(x,n-1));
 	}
-	
+//Carlos Puco	
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //concurrencia : existecia de procesoso en el mismo tiempo

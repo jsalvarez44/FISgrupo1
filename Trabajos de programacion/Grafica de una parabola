@@ -13,7 +13,7 @@ main()
    grafica_parabola(); //llamada.
    system("PAUSE");	
 }
-
+//Carlos Puco 
 void grafica_parabola(void)
 {
 	float i,y;

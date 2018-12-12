@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+  int cuenta_palabras(char *);
+  
+ 
+int main()
+{
+	char  string1[100];
+	 printf("Ingrese el texto para ver la cantidad de palabras :\n");
+     fgets(string1, 100, stdin);
+	int  k=cuenta_palabras(string1);
+    printf("la cantidad de palabras es %d \n", k);
+}
+int cuenta_palabras(char string1[])
+{
+    int contador = 0;
+    int largo = strlen(string1);
+ 
+    for( int i = 0; i < largo ; i++)
+    {
+        if(string1[i] == ' '  && string1[i-1] != ' ' && i>0)
+        {
+            contador ++; 
+		
+        }
+          
+    }

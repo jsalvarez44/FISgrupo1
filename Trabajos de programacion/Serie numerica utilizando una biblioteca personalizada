@@ -15,7 +15,7 @@ main()
 	resp=sn(n,x);
 	printf("\nLa serie vale: %f",resp);
 }
-
+//Carlos Puco
 float sn(int n, float x)
 {
 	float serie;

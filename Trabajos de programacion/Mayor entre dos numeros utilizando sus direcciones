@@ -4,7 +4,7 @@ int mayor(int *,int *);
 
 main()
 {
-	
+//Carlos Puco	
 	int A,B,resp;
 	
 	printf("Ingrese el primer valor entero: ");

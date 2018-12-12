@@ -1,0 +1,98 @@
+//algoritmo de orden y busqueda
+/*   busqueda lineal o secuencial.
+     busqueda no lineal. -------> es por grupos
+	 |
+ Ordenamiento los datos deben estar en orden
+    asendentes-----> numeros  
+	desendentes----> cadena de caracteres
+	
+
+     ejemplo:
+*/
+// ordenamiento y busqueda
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+bool buscar(int *,int,int);
+void mostrar(int *,int);
+void llenar(int *,int );
+void inter(int*, int *);
+void burbuja(int*,int );
+void desor(int*,int);
+main()
+{
+	int V[10];
+	int n;
+	int dato;
+	bool encontrado=false; //false o true
+	n=10;
+	dato=7;
+	llenar(V,n);
+	printf("\n el vector original es:    \n\n");
+	mostrar(V,n);
+	burbuja(V,n);
+	printf("\n el vector ordenado es:    \n\n");
+	mostrar(V,n);
+	desor(V,n);
+	printf("\n el vector desordenada es:    \n\n");
+	mostrar(V,n);
+	//encontrado =buscar(V,n,dato);
+	//if (encontrado == true)
+	//	printf("\nel dato %d fue encontado ",dato);
+	//else
+//		printf("\nel dato no fue encontrado ");
+}
+    void mostrar (int *p,int n)
+    {
+	
+	for (int i=0;i<n;i++)
+	{
+		printf("%4d",p[i]);
+	 } 
+}
+bool buscar(int *p,int n,int d)
+{
+	bool e;
+	e= false;
+	for(int i=0;i<n;i++)
+	{
+		if (d==p[i])
+		{
+}			e=true;
+			return e;
+		}
+		return e;
+	}
+}
+void llenar (int *p,int n)
+{
+	srand(time(NULL));
+	for (int i=0;i<n;i++)
+	{
+		p[i]=rand()%11;
+	}
+}
+void inter(int *p,int *q)
+{
+	int aux;
+	aux=*p;
+	*p=*q;
+	*q=aux;
+}
+void burbuja(int *p,int n)
+{
+	for(int i=0;i<n;i++)
+		for(int j=i+1;j<n;j++)
+			if (p[i]>p[j])
+				inter(&p[i],&p[j]);
+}
+void desor (int *p,int  n)
+{
+	int pos;
+	srand(time(NULL));
+	for (int i=0;i<n;i++)
+	{
+	pos=(i+rand()%n-1);
+	inter(&p[i],&p[pos]);
+	}
+}

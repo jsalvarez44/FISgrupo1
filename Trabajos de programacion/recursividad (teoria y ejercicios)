@@ -1,0 +1,191 @@
+RECURSIVIDAD: 
+
+En la programacion es una forma de interaccion (unica de vez en cuando)
+Existen conceptos recursivos asi como objetos recursivos, exiten ejemplos paradigmaticos que ejemplarizan el concepto recursivo.
+Por lo tanto, todo proceso recursivo necesita de alguna condicion o caso no recursivo que controle hasta cuando se ejecutaran los procesos.
+
+Cuando se implementa la recursividad a travez de una funcion en lenguaje C, es necesario controlar dentro de dicha funcion el caso no recursivo,
+para evitar un desborde en la memoria o un ciclo infinito.
+
+EJEMPLO: Se implementara la funcion factorial pero de manera recursiva.
+
+#include<stdio.h>
+
+int fact(int);
+
+main()
+{
+	int n,resp;
+	printf("Ingrese un valor n para calcular su factorial: ");
+	scanf("%d",&n);
+	
+	resp=fact(n);
+	printf("\nEl factorial de %d es %d",n,resp);
+}
+
+int fact(int n)
+{
+	if(n==0) 
+	{
+		return 1;	
+	}
+
+	return(n*fact(n-1));
+}
+
+EJERCICIO: Implementar una funcion recursiva que imprima hola las veces que lo diga el argumento
+
+#include<stdio.h>
+
+void hola(int);
+
+main()
+{
+	int n,resp;
+	printf("Ingrese un valor n de veces que quiere ser saludado: ");
+	scanf("%d",&n);
+	hola(n);
+}
+
+void hola (int n)
+{
+	if(n==0) 
+	{
+		return;
+	}
+	
+	printf("\nHola :v");
+	hola(n-1);
+}
+
+EJERCICIO: Implementar una funcion recursiva que pinte una circunferencia de forma recursiva
+
+#include <winbgim.h>
+#include <windows.h>
+
+void pintar_circ (int,int,int,int);
+
+main()
+{
+	int x,y,r,c;
+	
+	x=150;
+	y=150;
+	r=100;
+	c=15;
+	
+	initwindow(320,320);
+	cleardevice();
+	
+	pintar_circ(x,y,r,c);
+	
+	system("PAUSE");
+	closegraph();
+}
+
+void pintar_circ (int x, int y, int r, int c)
+{
+	if(r==0)
+	{
+		return;
+	}
+	if(c<0) 
+	{
+		c=15;
+	}
+	setcolor(c);
+	circle(x,y,r);
+	pintar_circ(x,y,r-1,c-1);
+}
+
+mi ejercicio
+
+
+
+#include<winbgim.h>
+#include<math.h>
+void circ_mio(int,int,int,int);
+
+
+main()
+{
+	
+	int x,y,radio,color,i;
+	x=400;
+	y=200;
+	radio=100;
+	i=0;
+	initwindow(800,600);
+	circ_mio(x,y,radio,i);
+	system("PAUSE");
+	closegraph();
+}
+void circ_mio (int x,int y,int r,int i)
+
+{
+	int xf,yf;
+	if(i==360) return;
+	{
+		yf=sin(i)*r;
+		xf=cos(i)*r;
+		putpixel(x+xf,y+yf,3);
+		circ_mio(x,y,r,i+1);
+	}
+} 
+
+//Ejercico de recursividad(sacar factorial)
+#include<stdio.h>
+int fact(int);
+
+main()
+{
+	int n,res;
+	printf("Deme un numero :  ");
+	scanf("%d",&n);
+	res=fact(n);
+	printf("\n factorial de %d es %d ",n,res);
+}
+//construimos el factorial recursivo 
+int fact(int n)
+
+
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(n==0)return 1;
+	else
+	return(n*fact(n-1));//aplica formuial recursiva
+}
+//Ejercicio  pra repetir "hola con recusividad"
+//implementar un nfunciuon recursiva las veces quie lo diga el argumento 
+#include<stdio.h>
+void hola(int);
+int fact(int );
+
+main()
+{
+	int n,res;
+	printf("Deme un numero :  ");
+	scanf("%d",&n);
+	hola (n);
+	
+}
+int fact(int n)
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(n==0)return 1;
+	else
+	return(n*fact(n-1));//construimos el factorial recursivo
+	
+} 
+void hola(int n)
+
+{
+	//empezamos verificandfo la condicion no recuersiva 
+	if(n==0) return;
+	else
+	{
+		printf("\n HOLA ");
+		hola(n-1);
+	}
+
+}

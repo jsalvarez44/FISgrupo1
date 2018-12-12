@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h> //para usar pow.
+#include <windows.h>
+
+void grafica_parabola(void); //prototipo.
+main()
+{
+   textbackground(GREEN);
+   textcolor(BLACK);
+   clrscr();
+   grafica_parabola(); //llamada.
+   system("PAUSE");	
+}
+
+void grafica_parabola(void)
+{
+	float i,y;
+	int x=2;
+	
+	for(i=-5;i<=5;i+=0.2) //i+=0.2 = i=i+0.2
+	{
+		y=pow(i,2); //pow=potencia.
+		gotoxy(x,24-y);
+		cprintf("|");
+		x++;
+	}
+}

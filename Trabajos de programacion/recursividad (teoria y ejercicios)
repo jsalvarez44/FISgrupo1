@@ -148,7 +148,7 @@ main()
 //construimos el factorial recursivo 
 int fact(int n)
 
-
+//Carlos Puco
 {
 	//empezamos verificandfo la condicion no recuersiva 
 	if(n==0)return 1;

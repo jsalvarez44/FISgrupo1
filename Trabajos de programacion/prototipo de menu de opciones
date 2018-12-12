@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <windows.h>
+
+int menu(void); //prototipo
+main()
+{
+	int r;
+	for(;;) //bucle infinito.
+	{
+		system("CLS");
+		r=menu(); //llamada.
+		switch(r)
+		{
+			case 1:
+				printf("Se ejecuta opcion 1\n");
+				system("PAUSE");
+				break;
+			case 2:
+				printf("Se ejecuta opcion 2\n");
+				system("PAUSE");
+				break;
+			case 3:
+				printf("Saliendo del programa...\n");
+				system("PAUSE");
+				exit(1);
+			default:
+				printf("Digita bien\n");
+				Beep(800,700); //sonido.
+				system("PAUSE");
+				break;
+		}
+	}
+}
+int menu(void) //construccion
+{
+	int opcion;
+	printf("MENU DE OPCIONES");
+	printf("\n1. Opcion 1");
+	printf("\n2. Opcion 2");
+	printf("\n3. Salir");
+	printf("\n\nQue desea hacer?\n");
+	scanf("%d",&opcion);
+	return(opcion);
+}

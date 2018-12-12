@@ -1,0 +1,146 @@
+#include <stdio.h>
+#include <windows.h>
+
+#define MAXFIL 20
+#define MAXCOL 20
+
+void transp(float[][MAXCOL],float[][MAXCOL],int,int);
+void mostrar(float[][MAXCOL],int, int);
+void leer (float[][MAXCOL],int,int);
+void encerar(float[][MAXCOL],int,int);
+void sumar(float[][MAXCOL],float[][MAXCOL],float[][MAXCOL],int,int,int,int);
+void multiplicar(float[][MAXCOL],float[][MAXCOL],float[][MAXCOL],int,int,int,int);
+
+main()
+{
+	int f1,c1,f2,c2;
+	float M[MAXFIL][MAXCOL],N[MAXFIL][MAXCOL],S[MAXFIL][MAXCOL],T[MAXFIL][MAXCOL],U[MAXFIL][MAXCOL];
+	
+	//encerar(S,MAXFIL,MAXCOL);
+	//encerar(T,MAXFIL,MAXCOL);
+	encerar(U,MAXFIL,MAXCOL);
+	
+	printf("Ingrese el numero de filas de M: ");
+	scanf("%d",&f1);
+	printf("Ingrese el numero de columnas de M: ");
+	scanf("%d",&c1);
+	printf("\n");
+	
+	encerar(M,f1,c1);
+	
+	printf("\nIngrese datos de matriz M: \n\n");
+	leer(M,f1,c1);
+	printf("\nLa matriz M es: \n");
+	mostrar(M,f1,c1);
+	
+	printf("\n\nIngrese el numero de filas de N: ");
+	scanf("%d",&f2);
+	printf("Ingrese el numero de columnas de M: ");
+	scanf("%d",&c2);
+	printf("\n");
+	encerar(N,f2,c2);
+	
+	printf("\n\nIngrese datos de matriz N: \n\n");
+	leer(N,f2,c2);
+	printf("\nLa matriz N es: \n");
+	mostrar(N,f2,c2);
+	/*
+	printf("\n\nLa matriz suma es: ");
+	sumar(M,N,S,f,c);
+	printf("\n");
+	mostrar(S,f,c);
+	*/
+	printf("\n\nLa matriz multiplicacion es: ");
+	multiplicar(M,N,U,f1,f2,c1,c2);
+	printf("\n");
+	mostrar(U,f1,c2);
+	/*
+	printf("\n\nLa matriz transpuesta de suma es: ");
+	transp(U,T,f,c);
+	printf("\n");
+	mostrar(T,c,f);
+	*/
+}
+
+void mostrar(float M[][MAXCOL], int f, int c)
+{
+	for(int i=0;i<f;i++)
+	{
+		printf("\n");
+		for(int j=0;j<c;j++)
+		{
+			printf("%.2f	",M[i][j]);	
+		}
+	}
+}
+
+void transp (float S[][MAXCOL],float R[][MAXCOL],int f, int c)
+{
+	for(int i=0;i<f;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			R[j][i]=S[i][j];
+		}
+	}
+}
+
+void leer (float M[][MAXCOL],int f,int c)
+{
+	for(int i=0;i<f;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			printf("Ingrese el elemento [%d][%d]: ",i,j);
+			scanf("%f",&M[i][j]);
+		}
+	}
+}
+
+void encerar(float M[][MAXCOL],int f,int c)
+{
+	for(int i=0;i<f;i++)
+	{
+		for(int j=0;j<c;j++)
+		{
+			M[i][j]=0;
+		}
+	}
+}
+
+void sumar(float M[][MAXCOL],float N[][MAXCOL],float S[][MAXCOL],int f1,int f2, int c1, int c2)
+{
+	if(f1!=f2 || c1!=c2)
+	{
+		printf("\nNo se puede sumar estas matrices");
+		system("PAUSE");
+		return;
+	}
+	for(int i=0;i<f1;i++)
+	{
+		for(int j=0;j<c1;j++)
+		{
+			S[i][j]=M[i][j]+N[i][j];
+		}
+	}
+}
+
+void multiplicar(float M[][MAXCOL],float N[][MAXCOL],float U[][MAXCOL],int f1,int f2, int c1, int c2)
+{
+	if(c1!=f2)
+	{
+		printf("\nNo se puede multiplicar estas matrices");
+		system("PAUSE");
+		return;
+	}
+	for(int i=0;i<f1;i++)
+	{
+		for(int j=0;j<c2;j++)
+		{
+			for(int k=0;k<c1;k++)
+			{
+				U[i][j]=U[i][j]+M[i][k]*N[k][j];
+			}
+		}
+	}
+}

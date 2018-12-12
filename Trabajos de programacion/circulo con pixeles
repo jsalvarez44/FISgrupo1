@@ -8,7 +8,7 @@ void pinta_circ(int,int,int,int);
 
 main()
 {
-	
+//Carlos Puco	
 	int x,y,radio,color;
 	x=100;
 	y=200;

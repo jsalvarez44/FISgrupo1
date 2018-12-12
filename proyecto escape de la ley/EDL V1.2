@@ -1,0 +1,603 @@
+#include <winbgim.h>
+#include <windows.h>
+#include <conio.h>
+#include <math.h>
+
+void space_menu (void);                    //refiere a la interfaz del menu de inicio
+void letras (void);                        //refiere al nombre del juego, version y numero de demo dentro del menu de inicio
+void figure1 (void);                       //refiere al modelo del enemigo (policia) en el menu de inicio (estatico)
+void figure2 (void);                       //refiere al modelo del personaje (ladon) en el menu de inicio (estatico)
+void space (void);                         //refiere a la interfaz del fondo dentro de la opcion "Iniciar juego"
+void bills (void);                         //refiere a los billetes regados en la opcion "Iniciar juego"
+void personaje (int,int);                  //refiere al modelo jugable del personaje (ladron)
+void personaje_clear (int,int);		   	   //refiere al mismo modelo del personaje pero en negro*** utilidad=limpiar al personaje para cada movimiento								
+void salida (void);                        //refiere a la interfaz de de opcion "salir"
+void historia (void);			   		   //refiere a una introduccion antes de inicializar la opcion "iniciar juego" 									
+int poner_color (void);                    //refiere a una funcion auxiliar al diseño de la opcion "salir"*** utilidad=pinta pixeles de colores en el fondo
+void highscores (void);                    //refiere a la interfaz de la opcion "highscore"
+void letras_2 (void);                      //refiere a las letras dentro de la funcion "historia"
+void letras3 (void);					   //refiere a las letras dentro de la interfaz "como jugar"
+void letras4 (void);					   //refiere al complemento de letras en la interfaz "como jugar"
+void mensaje1 (void);					   //refiere al mensaje emergente al presionar una tecla erronea en el menu de inicio
+void mensaje2 (void);					   //refiere al mensaje emergente al presionar esc durante el juego
+void comojugar (void);					   //refiere a una inferfaz que muestra al usuarios como jugar previo al juego
+
+main()
+{
+	initwindow(1350,700);
+	
+	for(;;)
+	{
+		cleardevice();
+	
+		space_menu();
+		letras();
+		figure1();
+		figure2();
+	
+		char opcion;
+		
+		do
+		{
+			opcion=getch();
+		
+			switch(opcion)
+			{
+				case 49:
+					int x,y;
+					char tecla;
+					char teclasalida;
+
+					x=675;
+					y=600;
+				
+					cleardevice();
+					historia();
+					cleardevice();
+					comojugar();
+					Sleep(6000);
+					cleardevice();
+					space();
+					bills();
+	
+					personaje(x,y);
+		
+					do
+					{
+						tecla=getch();
+		
+						switch(tecla)
+						{
+							case 72:
+								if(y<=105){y=107;}
+								personaje_clear(x,y);
+								moveto(x,y-=10);
+								personaje(x,y);
+								break;
+							case 80:
+								if(y>=600){y=598;}
+								personaje_clear(x,y);
+								moveto(x,y+=10);
+								personaje(x,y);
+								break;
+							case 75:
+								if(x<=100){x=102;}
+								personaje_clear(x,y);
+								moveto(x-=10,y);
+								personaje(x,y);
+								break;
+							case 77:
+								if(x>=1250){x=1248;}
+								personaje_clear(x,y);
+								moveto(x+=10,y);
+								personaje(x,y);
+								break;
+						}
+					}while(tecla!=27);
+					mensaje2();
+					exit(1);
+				case 51:
+					cleardevice();
+					salida();
+					Sleep(4000);
+					exit(1);	
+				case 50:
+					cleardevice();
+					highscores();	
+					break;	
+				default:
+					mensaje1();
+					break;
+			}
+		}while(opcion!=27);	
+	}
+}
+
+void space_menu (void) //refiere a la interfaz del menu de inicio
+{
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(8);
+	rectangle(525,230,825,330);
+	rectangle(525,355,825,455);
+	rectangle(525,480,825,580);
+	setcolor(3);
+	rectangle(527,232,823,328);
+	rectangle(527,357,823,453);
+	rectangle(527,482,823,578);
+	setfillstyle(1,3);
+	floodfill(530,235,3);
+	floodfill(530,360,3);
+	floodfill(530,485,3);
+}
+
+void figure1 (void) //refiere al modelo del enemigo (policia) en el menu de inicio (estatico)
+{
+	setcolor(14);
+	circle(300,425,150);
+	setfillstyle(1,14);
+	fillellipse(300,425,150,150);
+	setcolor(8);
+	sector(300,425,180,360,150,150);
+	setcolor(1);
+	rectangle(150,425,450,550);
+	setfillstyle(1,1);
+	floodfill(300,450,1);
+	setcolor(1);
+	rectangle(285,255,365,300);
+	setfillstyle(1,1);
+	floodfill(300,270,1);
+	setcolor(RED);
+	settextstyle(4,0,6);
+	outtextxy(220,260,"!!");
+	setcolor(14);
+	circle(325,270,10);
+	setfillstyle(1,14);
+	fillellipse(325,270,10,10);
+	setcolor(6);
+	circle(325,270,6);
+	circle(325,270,5);
+	setcolor(8);
+	moveto(300,425);
+	lineto(275,445);
+	lineto(250,425);
+	moveto(301,425);
+	lineto(276,445);
+	lineto(251,425);
+	moveto(300,425);
+	lineto(250,425);
+	moveto(300,425);
+	lineto(325,445);
+	lineto(350,425);
+	moveto(299,425);
+	lineto(324,445);
+	lineto(349,425);
+	moveto(300,425);
+	lineto(350,425);
+	setfillstyle(1,8);
+	floodfill(275,430,8);
+	floodfill(325,430,8);
+}
+
+void figure2 (void) //refiere al modelo del personaje (ladon) en el menu de inicio (estatico)
+{
+	setcolor(14);
+	circle(1050,425,150);
+	setfillstyle(1,14);
+	fillellipse(1050,425,150,150);
+	setcolor(8);
+	sector(1050,425,180,360,150,150);
+	setcolor(15);
+	rectangle(900,425,1200,550);
+	setfillstyle(1,15);
+	floodfill(1050,450,15);
+	setcolor(14);
+	circle(1070,290,45);
+	setcolor(15);
+	sector(1070,290,0,180,45,45);
+	setcolor(0);
+	rectangle(915,425,945,550);
+	rectangle(975,425,1005,550);
+	rectangle(1035,425,1065,550);
+	rectangle(1095,425,1125,550);
+	rectangle(1155,425,1185,550);
+	setfillstyle(1,0);
+	floodfill(920,430,0);
+	floodfill(980,430,0);
+	floodfill(1040,430,0);
+	floodfill(1100,430,0);
+	floodfill(1160,430,0);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(1045,265,"USER");
+}
+
+void letras (void) //refiere al nombre del juego, version y numero de demo dentro del menu de inicio
+{
+	setcolor(15);
+	settextstyle(2,0,9);
+	outtextxy(527,265,"1. INICIAR JUEGO");
+	outtextxy(535,390,"2. HIGHSCORES");	
+	outtextxy(610,515,"3. SALIR");
+	settextstyle(3,0,9);
+	outtextxy(120,100,"ESCAPE DE LA LEY");
+	settextstyle(7,0,4);
+	outtextxy(900,200,"PRIMER DEMO");
+	settextstyle(7,0,3);
+	outtextxy(60,615,"V:1.2");
+}
+
+void personaje (int x, int y) //refiere al modelo jugable del personaje (ladron)
+{
+	setcolor(14);
+	circle(x,y,30);
+	setfillstyle(1,14);
+	fillellipse(x,y,30,30);
+	setcolor(8);
+	sector(x,y,180,360,30,30);
+	setcolor(15);
+	rectangle(x-29,y,x+29,y+20);
+	setfillstyle(1,15);
+	floodfill(x,y+10,15);
+	setcolor(14);
+	circle(x+5,y-25,12);
+	setcolor(15);
+	sector(x+5,y-25,0,-180,12,12);
+	setcolor(0);
+	rectangle(x-25,y,x-15,y+20);
+	rectangle(x-5,y,x+5,y+20);
+	rectangle(x+15,y,x+25,y+20);
+	rectangle(x,y-30,x+10,y-35);
+	setfillstyle(1,0);
+	floodfill(x-22,y+3,0);
+	floodfill(x-2,y+3,0);
+	floodfill(x+17,y+3,0);
+	floodfill(x+2,y-32,0);
+}
+
+void personaje_clear (int x, int y) //refiere al mismo modelo del personaje pero en negro*** utilidad=limpiar al personaje para cada movimiento
+{
+	setcolor(0);
+	circle(x,y,30);
+	setfillstyle(1,0);
+	fillellipse(x,y,30,30);
+	setcolor(0);
+	rectangle(x-34,y-4,x+34,y+24);
+	setfillstyle(1,0);
+	floodfill(x,y+10,0);
+	floodfill(x-29,y+10,0);
+	floodfill(x+28,y+10,0);
+	setcolor(0);
+	circle(x+5,y-25,13);
+	setcolor(0);
+	sector(x+5,y-25,0,-180,13,13);
+}
+
+void space (void) //refiere a la interfaz del fondo dentro de la opcion "Iniciar juego"
+{
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(1);
+	rectangle(150,150,400,550);
+	rectangle(950,150,1200,550);
+	rectangle(500,150,850,300);
+	rectangle(500,400,850,550);
+	setfillstyle(1,1);
+	floodfill(200,200,1);
+	floodfill(1000,200,1);
+	floodfill(550,200,1);
+	floodfill(550,450,1);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(50,25,"VIDAS RESTANTES: 2");
+	outtextxy(1172,25,"SCORE: 00000");
+}
+
+void bills (void) //refiere a los billetes regados en la opcion "Iniciar juego"
+{
+	
+	
+	for(int x=90;x<=1260;x=x+50)
+	{
+		setcolor(2);
+		rectangle(x,95,x+20,105);
+		setfillstyle(1,2);
+		floodfill(x+10,100,2);
+		setcolor(10);
+		rectangle(x+2,97,x+18,103);
+	}
+	
+	for(int y=140;y<=610;y=y+45)
+	{
+		setcolor(2);
+		rectangle(90,y,110,y+10);
+		setfillstyle(1,2);
+		floodfill(95,y+5,2);
+		setcolor(10);
+		rectangle(92,y+2,108,y+8);
+	}
+	
+	for(int x2=140;x2<=1260;x2=x2+50)
+	{
+		setcolor(2);
+		rectangle(x2,590,x2+20,600);
+		setfillstyle(1,2);
+		floodfill(x2+10,595,2);
+		setcolor(10);
+		rectangle(x2+2,592,x2+18,598);
+	}
+	
+	for(int y2=140;y2<=610;y2=y2+45)
+	{
+		setcolor(2);
+		rectangle(1240,y2,1260,y2+10);
+		setfillstyle(1,2);
+		floodfill(1245,y2+5,2);
+		setcolor(10);
+		rectangle(1242,y2+2,1258,y2+8);
+	}
+	
+	for(int y3=140;y3<=610;y3=y3+45)
+	{
+		setcolor(2);
+		rectangle(440,y3,460,y3+10);
+		setfillstyle(1,2);
+		floodfill(445,y3+5,2);
+		setcolor(10);
+		rectangle(442,y3+2,458,y3+8);
+	}
+	
+	for(int y4=140;y4<=610;y4=y4+45)
+	{
+		setcolor(2);
+		rectangle(890,y4,910,y4+10);
+		setfillstyle(1,2);
+		floodfill(895,y4+5,2);
+		setcolor(10);
+		rectangle(892,y4+2,908,y4+8);
+	}
+	
+	for(int x3=490;x3<=840;x3=x3+50)
+	{
+		setcolor(2);
+		rectangle(x3,340,x3+20,350);
+		setfillstyle(1,2);
+		floodfill(x3+5,345,2);
+		setcolor(10);
+		rectangle(x3+2,342,x3+18,348);
+	}
+}
+
+void salida (void) //refiere a la interfaz de de opcion "salir"
+{
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	
+	setcolor(15);
+	settextstyle(2,0,10);
+	outtextxy(400,300,"GRACIAS POR JUGAR :)");
+	
+	int x,y,i,color;
+	setcolor(15);
+	
+	for(i=1;i<=200;i++)
+	{
+		x=rand()%1200;
+		y=rand()%800;
+		color=poner_color();
+		putpixel(x,y,color);
+	}
+}
+
+void historia (void) //refiere a una introduccion antes de inicializar la opcion "iniciar juego"
+{
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(400,250,"...");
+	cleardevice();
+	letras_2();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(150,500,"POR EL MOMENTO ERES UN LADRON QUE ACABA DE ESCAPAR DE PRISION...");
+	figure2();
+	Sleep(4000);
+	cleardevice();
+	letras_2();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(500,500,"RECOGE TUS BILLETES EN EL MENOR TIEMPO POSIBLE Y ESCAPA DE LA LEY!");
+	figure1();
+	Sleep(4000);
+	cleardevice();
+	letras_2();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(600,600,"...");
+	cleardevice();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+}
+
+int poner_color(void) //refiere a una funcion auxiliar al diseño de la opcion "salir"*** utilidad=pinta pixeles de colores en el fondo
+{
+	int c;
+	c=rand()%4;
+	
+	switch(c)
+	{
+		case 0:c=1;break;
+		case 1:c=14;break;
+		case 2:c=4;break;
+		case 3:c=15;break;
+	}
+	return c;
+}
+
+void highscores (void) //refiere a la interfaz de la opcion "highscore"
+{
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	
+	setcolor(3);
+	rectangle(450,90,860,150);
+	setfillstyle(1,3);
+	floodfill(500,100,3);
+	setcolor(7);
+	rectangle(448,88,862,152);
+	setcolor(15);
+	settextstyle(2,0,10);
+	outtextxy(500,100,"HIGHSCORES");
+	outtextxy(460,300," 1.  _____________");
+	outtextxy(460,350," 2. _____________");
+	outtextxy(460,400," 3. _____________");
+	settextstyle(2,0,7);
+	outtextxy(100,600,"Presione esc para regresar al menu");
+}
+
+void letras_2 (void) //refiere a las letras dentro de la funcion "historia"
+{
+	setcolor(15);
+	settextstyle(2,0,10);
+	outtextxy(150,150,"HISTORIA");
+}
+
+void mensaje1 (void) //refiere al mensaje emergente al presionar una tecla erronea en el menu de inicio
+{
+	setcolor(15);
+	rectangle(400,200,950,550);
+	setcolor(15);
+	rectangle(401,201,949,549);
+	setcolor(RED);
+	rectangle(404,204,946,546);
+	setfillstyle(1,RED);
+	floodfill(410,210,RED);
+	setcolor(15);
+	settextstyle(2,0,9);
+	outtextxy(470,270,"INGRESE UNA OPCION");
+	settextstyle(2,0,10);
+	outtextxy(530,310,"CORRECTA!!!");
+	settextstyle(2,0,7);
+	outtextxy(520,465,"Presione esc para volver al menu...");
+	settextstyle(2,0,10);
+	outtextxy(640,380,":'(");
+}
+
+void mensaje2 (void) //refiere al mensaje emergente al presionar esc durante el juego
+{
+	setcolor(15);
+	rectangle(400,200,950,550);
+	setcolor(15);
+	rectangle(401,201,949,549);
+	setcolor(RED);
+	rectangle(404,204,946,546);
+	setfillstyle(1,RED);
+	floodfill(410,210,RED);
+	setcolor(15);
+	settextstyle(2,0,9);
+	outtextxy(485,350,"Finalizando el juego...");
+	settextstyle(2,0,7);
+	outtextxy(530,420,"Esperamos que vuelva pronto :)");
+	setcolor(0);
+	settextstyle(2,0,10);
+	outtextxy(400,460,"");
+	Sleep(3000);
+	cleardevice();
+	salida();
+	Sleep(4000);
+}
+
+void comojugar (void) //refiere a una inferfaz que muestra al usuarios como jugar previo al juego
+{
+	letras3();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	settextstyle(2,0,9);
+	outtextxy(150,250,"CONTROLES:");
+	outtextxy(150,400,"PRESIONE UP PARA MOVERSE HACIA ARRIBA");
+	outtextxy(150,450,"PRESIONE DOWN PARA MOVERSE HACIA ABAJO");
+	outtextxy(150,500,"PRESIONE RIGHT PARA MOVERSE HACIA LA DERECHA");
+	outtextxy(150,550,"PRESIONE LEFT PARA MOVERSE HACIA LA IZQUIERDA");
+	setcolor(0);
+	settextstyle(2,0,10);
+	outtextxy(150,600,"");
+	Sleep(10000);
+	cleardevice();
+	letras4();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(15);
+	settextstyle(2,0,8);
+	outtextxy(150,350,"Puedes salir del juego en cualquier momento presionando la tecla esc");
+	outtextxy(550,450,":D");
+	setcolor(0);
+	settextstyle(2,0,10);
+	outtextxy(150,600,"");
+	Sleep(4000);
+	cleardevice();
+	setcolor(1);
+	rectangle(50,50,1300,650);
+	rectangle(49,49,1299,649);
+	setcolor(7);
+	rectangle(47,47,1302,652);
+	setcolor(15);
+	settextstyle(2,0,7);
+	outtextxy(600,600,"CARGANDO...");
+	setcolor(0);
+	settextstyle(2,0,10);
+	outtextxy(150,150,"");
+}
+
+void letras3(void) //refiere a las letras dentro de la interfaz "como jugar"
+{
+	setcolor(15);
+	settextstyle(2,0,10);
+	outtextxy(150,150,"COMO JUGAR?");	
+}
+	
+void letras4 (void) //refiere al complemento de letras en la interfaz "como jugar"
+{
+	setcolor(15);
+	settextstyle(2,0,10);
+	outtextxy(150,150,"RECORDATORIO...");
+}

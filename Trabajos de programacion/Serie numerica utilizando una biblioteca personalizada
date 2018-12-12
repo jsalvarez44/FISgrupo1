@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<herramientasxd.h> //biblioteca personalizada
+
+float sn(int, float);
+
+main()
+{
+	float x,resp;
+	int n,i;
+	
+	printf("Ingrese un valor entero n: ");
+	scanf("%d",&n);
+	printf("Ingrese un valor flotante x: ");
+	scanf("%f",&x);
+	resp=sn(n,x);
+	printf("\nLa serie vale: %f",resp);
+}
+
+float sn(int n, float x)
+{
+	float serie;
+	int i;
+	serie=0;
+	
+	for(i=1;i<=n;i++)
+	{
+		serie=serie+((i*x)/factorial(i));
+	}
+	return(serie);
+}

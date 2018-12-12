@@ -206,7 +206,7 @@ void pastillas_3 (void)
 	    fillellipse(100,y,8,8);
 	}	
 }
-
+//Carlos Puco
 void fantasma (int x, int y)
 {
 	setcolor(1);

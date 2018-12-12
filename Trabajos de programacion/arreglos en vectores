@@ -105,7 +105,7 @@ main()
 	int fecha_n[3],fecha_a[3]={2018,11,22};
 	int edad[3];
 	
-	
+//Carlos Puco	
 	printf("\n Ingrese el año que nacio");
 	scanf("%d",&fecha_n[0]);
 	

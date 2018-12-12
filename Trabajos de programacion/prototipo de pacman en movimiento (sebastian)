@@ -335,7 +335,7 @@ void fantasma2 (int x, int y)
 	setcolor(1);
 	sector(x,y-35,0,-180,25,25);
 }
-
+//Carlos Puco
 void fantasma_clear2 (int x, int y)
 {
 	setcolor(0);

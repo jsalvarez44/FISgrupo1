@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <windows.h>
-
+//Carlos Puco
 int menu(void); //prototipo
 main()
 {

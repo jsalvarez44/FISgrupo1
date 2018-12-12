@@ -1,0 +1,168 @@
+ADJUNTO ALGUNOS EJERCICIOS Y MATERIA QUE HEMOS HECHO EN CLASE (-Sebastian Alvarez)
+
+/* el lenguaje tiene algunas instrucciones que permiten controlar la ejecucion del programa. Desde un punto de vista general, el control se clasifica en dos grupos:
+ 1) Instrucciones de bifurcacion
+ Es aquella que permite cambiar el flujo normal del programa. Existen basicamente dos instrucciones de bifurcacion en C:
+ - - - - - Condicionante (if - else)
+ 
+ if (proposicion)
+ { lista de instrucciones 
+si proposicion es berdadera
+}
+else
+{ lista de instrucciones 
+si proposicion es falsa
+}
+ 
+ */
+ 
+ //Ejemplo de (if - else) construir un codigo para identificar al mayor de dos numeros enteros ingresados desde el teclado:
+ 
+ /*
+ #include<stdio.h>
+ main()
+ {
+ 	int N1,N2;
+ 	printf("Programa que averigua el mayor numero entre dos enteros");
+ 	printf("\nIngrese el primer valor entero : ");
+ 	scanf("%d",&N1);
+ 	printf("Ingrese el segundo valor entero : ");
+ 	scanf("%d",&N2);
+ 	
+ 	if(N1>=N2)
+ 	{
+ 		printf("\nEl mayor es: %d",N1);
+ 		printf("\nGracias por usar");
+  }
+	 else
+	 {
+	 printf("\nEl mayor es: %d",N2);
+ 		printf("\nGracias por usar");	
+  }
+ }
+ */
+ 
+ /* Los operadores logicos y relacionales en C son los siguientes:
+ Logicos 
+ y <- &&
+ o <- ||
+ No <- !
+ */
+ 
+ //Ejemplo de operadores logicos: Se ingresa la nota final promedio de un estudiante, se desea implementar un programa que cualifique de la siguiente manera:
+ //Si la nota esta entre [0 a7) la nota es deficiente
+ //Si la nota esta entre de [7 a 10) la nota es regular
+ //Si la nota esta entre [10 a 14) la nota es buena
+ //Si la nota esta entre [14 a 17) la nota es muy buena
+ //Si la nota esta entre [17 a 20] la nota es excelente
+ 
+ /*
+ #include<stdio.h>
+ main()
+ {
+ 	float N;
+ printf("Programa que cualifica una nota");
+ printf("\nIngrese la nota: ");
+ scanf("%f",&N);
+ 
+ if(N>=0 && N<7)
+ {
+ 	printf("\nLa nota es Deficiente");
+ }
+ if(N>=7 && N<10)
+ {
+ 	printf("\nLa nota es Regular");
+ }
+ if(N>=10 && N<14)
+ {
+ 	printf("\nLa nota es Buena");
+ }
+ if(N>=14 && N<17)
+ {
+ 	printf("\nLa nota es Muy buena");
+ }
+ else
+ {
+ 	printf("\nEL alumno es matado");
+ }
+ }
+ */
+ 
+ /* Notas: 
+ -En la instruccion if-else puede omitirse el uso de llaves si es que en cada caso se ejecuta una sola instruccion 
+ -cuando una instruccion if-else contiene dentro de si a otra instruccion if-else se denomina if-else anidado
+ 
+ - - - - - Condicionante (switch - case)
+ 
+ 2) Intrucciones de repeticion  
+ 
+ */
+ 
+ // EJERCICIO Implementar un codigo que calcule las raices de una ecuacion de segundo grado previo el ingreso de los respectivos coeficientes
+ 
+ /*
+ #include<stdio.h>
+ #include<math.h>
+ main()
+ {
+ float A;
+ float B;
+ float C;
+ float discr,X1,X2;
+ printf("Programa que calcula raices de ecuaciones de segundo grado");
+ printf("\nIngrese coeficiente A: ");
+ scanf("%f",&A);
+ printf("\nIngrese coeficiente B: ");
+ scanf("%f",&B);
+ printf("\nIngrese coeficiente C: ");
+ scanf("%f",&C);	
+ 
+ discr=(B*B)-(4*A*C);
+ 
+ if(discr<0)
+ {
+ 	printf("\nNo hay solucion");
+ 	printf("\nGracias por utilizar este programa");	
+ }
+ else
+ {
+ 	X1=(-B+sqrt(discr))/(2*A);
+ 	X2=(-B-sqrt(discr))/(2*A);
+ 	printf("\nX1=%f",X1);
+ 	printf("\nX2=%f",X2);
+ }
+ }
+*/
+
+//EJERCICIO Se ingresan desde el teclado tres numeros. Diseñar un codigo que muestre en pantalla al mayor de ellos
+
+/*
+#include<stdio.h>
+main()
+{
+	float N1,N2,N3;
+ 	printf("Programa que averigua el mayor numero entre tres numeros flotantes");
+ 	printf("\nIngrese el primer valor flotante : ");
+ 	scanf("%f",&N1);
+ 	printf("Ingrese el segundo valor flotante : ");
+ 	scanf("%f",&N2);
+ 	printf("Ingrese el tercer valor flotante : ");
+ 	scanf("%f",&N3);
+ 	
+ 	if(N1>N2 && N1>N3)
+ 	{
+ 	printf("\nEl mayor es: %f",N1);
+ 	printf("\nGracias por usar");
+  }
+	 if(N2>N1 && N2>N3)
+	 {
+	printf("\nEl mayor es: %f",N2);
+ 	printf("\nGracias por usar");
+  }
+     if(N3>N1 && N3>N2)
+     {
+    printf("\nEl mayor es: %f",N3);
+ 	printf("\nGracias por usar");
+   }
+}
+*/

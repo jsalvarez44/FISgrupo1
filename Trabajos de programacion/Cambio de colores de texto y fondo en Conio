@@ -110,7 +110,7 @@ for(int cuenta=0;cuenta<=15;cuenta++)
 		
    }
 }
-/ PARTE DE CARLOS PUCO
+// PARTE DE CARLOS PUCO
 /* Te falta declarar la libreria stdio.h :) (-Sebastian Alvarez) */
 // ya le corregi //
 
@@ -145,4 +145,3 @@ B=B+3;
 C=C+1;
 }
 }
-

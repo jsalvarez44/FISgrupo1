@@ -1,0 +1,47 @@
+EJERCICIO: Se ingresa la fecha de nacimiento de una persona en el formato AA/MM/DD, se desea construir un programa 
+		que permita determinar la edad a la fecha actual en AA/MM/DD
+	
+
+#include <stdio.h>
+
+main()
+{
+	int fechaN[3],edad[3];
+	int fechaA[3]={2018,11,22};
+	
+	printf("Ingrese su año de nacimiento\n");
+	scanf("%d",&fechaN[0]);
+	printf("Ingrese su mes de nacimiento\n");
+	scanf("%d",&fechaN[1]);
+	printf("Ingrese su dia de nacimiento\n");
+	scanf("%d",&fechaN[2]);
+	
+	if(fechaA[2]>=fechaN[2])
+	{
+		edad[2]=fechaA[2]-fechaN[2];
+	}
+	if(fechaA[2]<fechaN[2])
+	{
+		fechaA[1]=fechaA[1]-1;
+		fechaA[2]=fechaA[2]+30;
+		
+		edad[2]=fechaA[2]-fechaN[2];
+	}
+	if(fechaA[1]>=fechaN[1])
+	{
+		edad[1]=fechaA[1]-fechaN[1];
+	}
+	if(fechaA[1]<fechaN[1])
+	{
+		fechaA[0]=fechaA[0]-1;
+		fechaA[1]=fechaA[1]+12;
+		
+		edad[1]=fechaA[1]-fechaN[1];
+	}
+	if(fechaA[0]>=fechaN[0])
+	{
+		edad[0]=fechaA[0]-fechaN[0];
+	}
+	
+	printf("\nSu edad es %d años, %d meses, %d dias",edad[0],edad[1],edad[2]);
+}

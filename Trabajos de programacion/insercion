@@ -1,0 +1,136 @@
+#include<stdio.h>
+#include<time.h>
+#include<stdlib.h>
+
+bool buscar(int *,int,int);
+void mostrar(int *,int);
+void llenar(int *,int);
+void intercambia(int *,int *);
+void burbuja(int *,int);
+void desordena(int *,int);
+int menor (int *,int,int);
+int incercion (int*,int);
+main()
+{
+	int V[10];
+	int n,dato,k,min;
+	bool encontrado=false;//False/true
+	n=10;
+	dato=7;
+	
+	llenar(V,n);
+	printf("\nEl vector original es: \n");
+	mostrar(V,n);
+	
+	burbuja(V,n);
+	printf("\nEl vector ordenado es: \n");
+	mostrar(V,n);
+	
+	desordena(V,n);
+	printf("\nEl vector desordenado es: \n");
+	mostrar(V,n);
+	
+	incercion(V,n);
+	printf("\nEl vector ordenado por incercion: \n");
+	mostrar(V,n);
+//	k=4;
+//	min=menor (V,k,n);
+//	printf("\n el menor del vector V desde la posicion %d es %d",k,min);
+	
+
+	
+}
+void mostrar(int *p,int n)//void mostrar(int p[])
+{
+	for(int i=0;i<n;i++)
+	{
+		printf("%d ",p[i]);
+	}
+}
+bool buscar(int *p,int n,int d)
+{
+	bool e;
+	e=false;
+	for(int i=0;i<n;i++)
+	{
+		if(d==p[i])
+		{
+			e=true;
+			return e;
+		}
+	return e;
+	}
+}
+void llenar(int *p,int n)
+{
+	srand(time(NULL));
+	for(int i=0;i<n;i++)
+	{
+		p[i]=rand()%100;//Aleatorio entre 0 y 99
+	}
+}
+void intercambia(int *p,int *q)
+{
+	int aux;
+	aux=*p;
+	*p=*q;
+	*q=aux;
+}
+void burbuja(int *p,int n)
+{
+	for(int i=0;i<n;i++)
+	{
+		for(int j=i+1;j<n;j++)
+		{
+			if(p[i]>p[j])
+			{
+				intercambia(&p[i],&p[j]);
+			}
+		}
+	}
+}
+void desordena(int *p,int n)
+{
+	int pos;
+	srand(time(NULL));
+	for(int i=0;i<n;i++)
+	{
+		pos=i+rand()%(n-i);
+		intercambia(&p[i],&p[pos]);
+	}
+}
+int menor (int *p ,int k,int n)
+{
+	int m,posicion;
+	m=p[k];
+	posicion=k;
+	for (int i=k+1;i<n;i++)
+	if(m>p[i])
+	{
+	
+		m=p[i];
+		posicion=m;
+		
+	}
+		return posicion;	
+	
+}
+
+int incercion (int*p,int n)
+{
+	int i,k,aux;
+	for (int i=0;i<n;i++)
+		{
+		    
+			k=p[i];
+			aux=i-1;
+			while ((aux>=0)&&(p[aux]<k))
+			{
+				k=menor(p,k,n);
+				p[aux+1]=p[aux];
+				aux=aux-1;
+				p[aux+1]=k;
+			}
+		}
+}
+	

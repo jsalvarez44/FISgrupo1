@@ -1,0 +1,74 @@
+/*las uniones son estruturas quer se gestionan igual a la struct la diferencia adica en la representacon 
+interna pra la union 
+union algo {
+int a;
+char b;    };
+main()
+{
+	algo a1,a2;
+	a1.a=10;
+	a2.b='z';
+}
+las enimeraciones permiten enmascarar datos enteros 
+enum equipo_fut{
+	liga,
+	emelec,
+	barca,
+	nacho,
+};
+main()
+{
+	equipo_fut e1,e2;
+	e1=liga;
+	e2=emelec;
+	printf("e1 vale %d",e1);
+
+}
+//nota se peude emascar otros tipos datos y otraestructursa utilizando la palabra reservada "typedef"
+ 
+// typedef - tipo de dato - nombre 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+PUNTEROS  A ESTRUCTURAS
+
+CUANDO SE GENERAN NUEVAS ESTRUCTURAS DE DATOS SE PUEDEN AMPLIAR LA COMPLEJIDAD GENRANDO ESTRUCTURAS DE DATOS 
+MAS AVANZAAS. UNA STRUCTURADE DATOS ES UN CONJUNTO DE INFORMACIONES ENLAZADAS DE ALGUNA MANERA ESPECIFICA 
+uno de los   de a estuructura en lazadas tiene que ver con los puenteros ya que estos operativizan los enlaces propiamente dichos 
+requeriendo utilizar declaraciones recursibas pra estructuras
+#include<stdio.h>
+struct cosa{
+	int info;
+	cosa *sigte;
+};
+main()
+{
+	cosa *ptr1,*ptr2;
+	ptr1= new cosa;
+	if(ptr1 == NULL)
+		{
+			printf("no hay memoria");
+			//exit(1);
+		}
+	ptr1->info=10;
+	ptr1->sigte=NULL;
+	
+	ptr2=new cosa; /// control de memoria 	
+	ptr2->info=20;
+	ptr2->sigte=ptr1;
+	ptr2=ptr2->sigte;
+	
+	
+	printf("\n %d",ptr2->info);
+	printf("\n %d",ptr2->sigte);
+}
+
+
+las estructuras de datos fundamentales son:
+	la pila------>primero entrar y ultimo  en salir 
+	la cola------>primero en entrar y preimero salir 
+	el arbol----->
+	el grafo
+ya sean con enalces simples o con enlae multiple  
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+suponiendo que se conoce la direccion del tope en una pila , construir una funcion que añada un nuevo nodo a la estructura */

@@ -1,0 +1,112 @@
+/*funciones getc y putc
+cuando se escribe un codigo en c se genran o se habren autormatiamente dos flujos estandar : stdin y stdout mismos queetsana asoaciadnos 
+al teclado y pantalla( tambie s elos llamar archivos de entrada y salida estandar. existen adicionalamente dos fincinoes que potencian la gestion 
+de caracteres con archivos putc y getc como se muetra en el sigueite ejemplo*/
+
+#include<stdio.h>
+#include<windows.h>
+#include<conio.h>
+void encriptarArchivo();
+void desencriptarArchivo();
+int menu();
+
+ main()
+ {
+ 	int r;
+ 	for(;;)
+	{
+		system("CLS");
+		r=menu();
+		switch(r)
+		{
+ 			case 1: 
+			    system("CLS");
+			    printf("\n");
+			    encriptarArchivo();
+			    system("PAUSE");
+			    system("CLS");
+			    break;
+			case 2: 
+			    system("CLS");
+			    printf("\n");
+			    desencriptarArchivo();
+			    system("PAUSE");
+			    system("CLS");
+			    break;
+			case 3:
+				system("CLS");
+				exit(1);
+			
+       }
+       
+	} 
+}
+void encriptarArchivo()
+{
+
+ 	char c;
+ 
+     char arch_in[]="C:/clase/cifrar.txt";
+ 	 char arch_out[]="C:/clase/descifra.xt";
+ 	 
+	  
+	  FILE *fpi,*fpo;
+	  
+ 	 fpi=fopen(arch_in,"r");
+ 	 fpo=fopen(arch_out,"w");
+     c=fgetc(fpi); 	 
+ 	 
+	 while(c>0)
+     {      
+            fputc( c + 3, fpo);
+            c=fgetc( fpi );
+     } 
+     
+     fclose( fpi );
+     fclose( fpo );
+     
+     printf( "Listo. Pulsa Enter para salir.\n" );
+     
+     getchar();
+ }
+ void desencriptarArchivo()
+ {
+ 	
+ 	 char arch_out[]="C:/clase/descifra.xt";
+ 	 char arch_new[]="C:/clase/cifranew.txt";
+ 	 
+ 	
+ 	 FILE *fpo;
+     FILE *fpu;
+     char c;
+     
+     fpo=fopen(arch_out, "r" );
+     fpu= fopen(arch_new, "w" );
+     c=fgetc(fpo);
+     
+     while(c>0)
+     {
+            fputc( c -3, fpu );
+            c=fgetc(fpo);
+     }
+     
+     fclose( fpo);
+     fclose( fpu);
+     
+     printf( "Listo. Pulsa Enter para salir.\n" );
+     
+     getchar();
+ }
+ int menu(void)
+{
+	int opcion;
+	printf("\n---------MENU DE OPCIONES--------\n");
+	printf("\n1.Encriptar archivo");
+	printf("\n2.Desemcriptar archivo");
+	printf("\n3. Salir");
+	printf("\n\n-------------******-------------");
+	printf("\n");
+	printf("\n\n Elija una opcion >>  ");
+	scanf("%d",&opcion);
+	return(opcion);
+}

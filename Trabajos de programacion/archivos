@@ -1,0 +1,112 @@
+#include<stdio.h>
+#include<conio.h>
+#include<ctype.h>
+#include<string.h>
+#include<windows.h>
+int menu(void);
+main()
+{
+	char arch_in[]="C:/clase/personal.txt";
+	char digito[10];
+	char nombre[30];
+	char apellido[30];
+	char direccion[30];
+	int nacimiento;
+	
+	char arch[]="C:/clase/laboral.txt";
+	char ocupacion[30];
+	int sueldo;
+	int carga;
+
+	FILE *ofp,*ifp;
+	
+	ifp=fopen(arch_in,"r");
+	ofp=fopen(arch,"r");
+	
+	int r;
+	int a=0;
+	for(;;)
+	{
+		system("CLS");
+		r=menu();
+		switch(r)
+		{
+			case 1: 
+			    system("CLS");
+			    printf("\n");
+			    fseek(ifp,0,SEEK_SET);
+			    while(fscanf(ifp,"%s %s %s %s %d",digito,nombre,apellido,direccion,&nacimiento)!=EOF)
+				{
+					printf("%s %s\n",nombre,apellido);
+				}
+			    system("PAUSE");
+			    getch();
+			    
+			    break;
+			case 2: 
+			    system("CLS");
+			    printf("\n");
+			    fseek(ifp,0,SEEK_SET);
+			    while(fscanf(ifp,"%s %s %s %s %d",digito,nombre,apellido,direccion,&nacimiento)!=EOF)
+				{
+					if(nacimiento>=1970)
+					{
+						printf("%s %s\n",nombre,apellido);
+					}
+				}
+			    system("PAUSE");
+			    getch();
+			    break;
+			case 3: 
+			    system("CLS");
+			    printf("\n");
+			    fseek(ofp,0,SEEK_SET);
+			    fseek(ifp,0,SEEK_SET);
+			    while(fscanf(ifp,"%s %s %s %s %d",digito,nombre,apellido,direccion,&nacimiento) && fscanf(ofp,"%s %s %d %d",digito,ocupacion,&sueldo,&carga)!=EOF)
+				{
+					if(sueldo>=1800)
+					{
+						printf("%s %s\n",nombre,apellido);
+					}
+				}
+			    system("PAUSE");
+			    getch();
+			    break;
+			case 4:
+				system("CLS");
+				printf("\n");
+				fseek(ofp,0,SEEK_SET);
+			    while(fscanf(ofp,"%s %s %d %d",digito,ocupacion,&sueldo,&carga)!=EOF)
+				{
+					a=a+sueldo;
+				}
+				printf("El saldo total de todos los empleados es de %d\n",a);
+				a=0;
+			    system("PAUSE");
+			    getch();
+			    break;
+			case 5:
+				fclose(ofp);
+				fclose(ifp);
+				exit(1);
+			default: 
+			     printf("Digita bien");
+				 system("PAUSE");
+			     break;	 	      
+		}
+	}
+}
+int menu(void)
+{
+	int opcion;
+	printf("---------MENU DE OPCIONES--------");
+	printf("\n1.Mostrar lista de empleados");
+	printf("\n2.Mostrar lista de empleados nacidos a partir de 1970");
+	printf("\n3.Mostrar lista de empleados con un sueldo superior o igual a 1800");
+	printf("\n4.Total de salario al mes");
+	printf("\n5. Salir");
+	printf("\n");
+	printf("\n\n Elija una opcion >>  ");
+	scanf("%d",&opcion);
+	return(opcion);
+}

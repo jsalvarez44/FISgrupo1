@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<ctype.h>
+#include<string.h>
+
+bool comprobar (char *);
+main()
+{
+	char arch_in[]="D:/Clase/entrada.txt";
+	char arch_out[]="D:/Clase/salida.txt";
+	char nombre[30];
+	FILE *ofp,*ifp;
+	ifp=fopen(arch_in,"r");
+	ofp=fopen(arch_out,"w");
+	while(fscanf(ifp,"%d",nombre)!=EOF)
+	{
+		if(comprobar(nombre)==true)
+		{
+			fprintf(ofp,"%s\n",comprobar);
+		}
+	}
+	fclose(ofp);
+	fclose(ifp);
+}
+bool comprobar(char *nombre)
+{
+	bool resp;
+	int primero=0;
+	int segundo=0;
+	
+int cont=strlen(nombre);
+	for(int i=0;i<cont;i++){
+		if(isdigit(nombre[i])!=0){
+			segundo++;
+		}
+		else{
+			primero++;	
+		}
+	}
+	if(primero==0){
+		resp=true;
+	}
+	else{
+		resp=false;
+	}
+	
+	return resp;
+}
